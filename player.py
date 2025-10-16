@@ -28,10 +28,13 @@ class Player:
     # retrieve dungeon data in time range
     def fetch_dungeon_data_with_time(self,df,sel_date):
         f_df = Player.prepare_set(df,sel_date)
-        return f_df[f_df["player"] == self.__name].groupby(["dungeon_name"])["dungeon_name"].count().reset_index(name="record_count")
+        return f_df[f_df["player"] == self.__name].groupby(["dungeon_name","timed"])["dungeon_name"].count().reset_index(name="record_count")
     
     # retrieve level data in time range
     def fetch_level_data_with_time(self,df,sel_date):
         f_df = Player.prepare_set(df,sel_date)
         return f_df[f_df["player"] == self.__name].groupby(["mythic_level","timed"])["mythic_level"].count().reset_index(name="record_count")
+    
+    def fetch_static_data(self,df):
+        pass
     
