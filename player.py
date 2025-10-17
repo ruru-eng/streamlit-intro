@@ -36,5 +36,5 @@ class Player:
         return f_df[f_df["player"] == self.__name].groupby(["mythic_level","timed"])["mythic_level"].count().reset_index(name="record_count")
     
     def fetch_static_data(self,df):
-        pass
+        return df[df["name"] == self.__name]
     
