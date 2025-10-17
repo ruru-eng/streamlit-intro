@@ -7,12 +7,8 @@ from streamlit_gsheets import GSheetsConnection
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-static_info = conn.read()
-st.write("Sheet names:",list(static_info.keys()))
-# chars2 = conn.read(worksheet="characters")
-# df2 = conn.read(worksheet="run_details")
+conn.read(worksheet=0)
 
-print(static_info.head())
 # Load data
 df = pd.read_csv("run_details.csv")
 chars = pd.read_csv("characters.csv")
